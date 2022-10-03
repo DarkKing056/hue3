@@ -1,6 +1,7 @@
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.util.Comparator;
 import java.util.List;
 
 public class FileReader {
@@ -12,16 +13,19 @@ public class FileReader {
         this.fileList = fileList;
     }
 
-    public void toList(){
+    public List<Weapen> toList(){
         try {
             fileList= Files.lines(new File(fileName).toPath())
                     .skip(1)
                     .map(n -> n.split(";"))
                     .map(n ->new Weapen(n[0],CombatType.valueOf(n[1]),DamageType.valueOf(n[2]),Integer.parseInt(n[3]),Integer.parseInt(n[4]),Integer.parseInt(n[5]),Integer.parseInt(n[6])))
+                    .toList()
+                    .stream().sorted(Comparator.comparingInt(Weapen::getDamage).reversed())
                     .toList();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        return fileList;
     }
 
 }

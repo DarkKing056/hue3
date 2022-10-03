@@ -9,7 +9,7 @@ public class Main {
 
         FileReader fileReader=new FileReader("weapons.csv",weapens);
 
-        fileReader.toList();
+        weapens=fileReader.toList();
         for (int i = 0; i < weapens.size(); i++) {
             System.out.println(weapens.get(i));
         }
