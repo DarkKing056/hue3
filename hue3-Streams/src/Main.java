@@ -1,3 +1,4 @@
+import java.awt.print.Printable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,9 +11,8 @@ public class Main {
         FileReader fileReader=new FileReader("weapons.csv",weapens);
 
         weapens=fileReader.toList();
-        for (int i = 0; i < weapens.size(); i++) {
-            System.out.println(weapens.get(i));
-        }
 
+        fileReader.print();
     }
+
 }
