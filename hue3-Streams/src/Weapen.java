@@ -73,4 +73,17 @@ public class Weapen {
     public void setValue(int value) {
         this.value = value;
     }
+
+    @Override
+    public String toString() {
+        return "Weapen{" +
+                "name='" + name + '\'' +
+                ", combatType=" + combatType +
+                ", damageType=" + damageType +
+                ", damage=" + damage +
+                ", speed=" + speed +
+                ", strength=" + strength +
+                ", value=" + value +
+                '}';
+    }
 }
