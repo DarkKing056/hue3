@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/lavender"
+    android:paddingTop="10dp"
+    >
+    <RelativeLayout
+        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:padding="16dp"
+        >
+
+        <ImageView
+            android:id="@+id/left_Icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/baseline_arrow_back_24"
+            android:layout_centerVertical="true"
+            />
+        <ImageView
+        android:id="@+id/left_logout_Icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/logout_icon"
+        android:layout_centerVertical="true"
+        android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@+id/left_Icon"
+            android:textStyle="bold"
+            android:text="Title Fenster"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:layout_centerVertical="true"
+            />
+
+
+        <ImageView
+            android:id="@+id/settingsIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/settings_icon"
+            android:layout_centerVertical="true"
+            />
+
+        <ImageView
+            android:id="@+id/profileIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+
+            android:layout_marginEnd="16dp"
+            android:layout_toStartOf="@+id/settingsIcon"
+            android:background="@drawable/profile_icon"
+
+            android:layout_centerVertical="true"
+            />
+
+        <ImageView
+            android:visibility="invisible"
+            android:id="@+id/statisticIcon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+
+            android:layout_marginEnd="16dp"
+            android:layout_toStartOf="@+id/profileIcon"
+            android:background="@drawable/statistic_icon"
+
+            android:layout_centerVertical="true"
+            />
+
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
