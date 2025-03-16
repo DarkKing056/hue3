@@ -113,10 +113,10 @@ public class LoginFragment extends Fragment {
 
     private void setToolBar(){
         ToolbarBinding toolbar=binding.loginToolBar;
-        binding.cnstWholeLayout.setBackgroundColor(Color.parseColor(requireContext().getSharedPreferences("themaSP", Context.MODE_PRIVATE).getString("backgroundThema", "#f78692")));
+        binding.cnstWholeLayout.setBackgroundColor(Color.parseColor(requireContext().getSharedPreferences("themaSP", Context.MODE_PRIVATE).getString("backgroundThema", "#EFEFD0")));
         binding.btnLogin.setBackgroundResource(requireContext().getSharedPreferences("themaSP", Context.MODE_PRIVATE).getInt("btnThema",R.drawable.custom_button_pattern1));
 
-        toolbar.getRoot().setBackgroundColor(Color.parseColor(requireContext().getSharedPreferences("themaSP", Context.MODE_PRIVATE).getString("toolbarThema", "#E6E6FA")));
+        toolbar.getRoot().setBackgroundColor(Color.parseColor(requireContext().getSharedPreferences("themaSP", Context.MODE_PRIVATE).getString("toolbarThema", "#FF6B35")));
         if (requireContext().getSharedPreferences("themaSP", Context.MODE_PRIVATE).getString("language", "de").equals("de")){
             toolbar.title.setText("Anmelde-Seite");
             binding.edtxUsername.setHint("Benutzername");
@@ -178,10 +178,19 @@ public class LoginFragment extends Fragment {
                                 }
                             } else {
                                 // Handle other unexpected errors
-                                ShowPopUp("login_error", "Unexpected error occurred: " + errorMessage);
+                                if (requireContext().getSharedPreferences("themaSP", Context.MODE_PRIVATE).getString("language", "de").equals("de")){
+                                    ShowPopUp("❌ Fehler", "Ein unerwarteter Fehler ist aufgetreten: "+errorMessage);
+                                }else{
+                                    ShowPopUp("❌ Error", "Unexpected error occurred: " + errorMessage);
+                                }
                             }
                         } else {
-                            ShowPopUp("login_error", "No response from server.");
+                            // Handle other unexpected errors
+                            if (requireContext().getSharedPreferences("themaSP", Context.MODE_PRIVATE).getString("language", "de").equals("de")){
+                                ShowPopUp("❌ Fehler", "Server reagiert nicht oder wurde nicht gefunden!");
+                            }else{
+                                ShowPopUp("❌ Error", "No response from server!");
+                            }
                         }
                     }
                 });

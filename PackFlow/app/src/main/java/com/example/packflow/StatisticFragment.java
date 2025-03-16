@@ -116,7 +116,8 @@ public class StatisticFragment extends Fragment {
         binding.btnEndDate.setOnClickListener(v -> showDatePickerDialog(binding.btnEndDate));
 
 
-        binding.cnstWholeLayout.setBackgroundColor(Color.parseColor(requireContext().getSharedPreferences("themaSP", Context.MODE_PRIVATE).getString("backgroundThema", "#8692f7")));
+        binding.cnstWholeLayout.setBackgroundColor(Color.parseColor(requireContext().getSharedPreferences("themaSP", Context.MODE_PRIVATE).getString("backgroundThema", "#EFEFD0" +
+                "+##")));
 
 
         getUserPackagesBetweenDate(binding.btnStartDate.getText().toString(),binding.btnEndDate.getText().toString());
@@ -569,7 +570,7 @@ public class StatisticFragment extends Fragment {
     }
     private void setToolBar(){
         ToolbarBinding toolbar=binding.statisticToolBar;
-        toolbar.getRoot().setBackgroundColor(Color.parseColor(requireContext().getSharedPreferences("themaSP", Context.MODE_PRIVATE).getString("toolbarThema", "#f78692")));
+        toolbar.getRoot().setBackgroundColor(Color.parseColor(requireContext().getSharedPreferences("themaSP", Context.MODE_PRIVATE).getString("toolbarThema", "#FF6B35")));
 
         binding.btnStartDate.setBackgroundResource(requireContext().getSharedPreferences("themaSP", Context.MODE_PRIVATE).getInt("btnThema", R.drawable.custom_button_pattern1));
         binding.btnEndDate.setBackgroundResource(requireContext().getSharedPreferences("themaSP", Context.MODE_PRIVATE).getInt("btnThema", R.drawable.custom_button_pattern1));

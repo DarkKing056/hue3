@@ -87,7 +87,7 @@ public class ProfileFragment extends Fragment {
         binding= FragmentProfileBinding.inflate(getLayoutInflater());
 
         getInformation();
-        binding.cnstWholeLayout.setBackgroundColor(Color.parseColor(requireContext().getSharedPreferences("themaSP", Context.MODE_PRIVATE).getString("backgroundThema", "#8692f7")));
+        binding.cnstWholeLayout.setBackgroundColor(Color.parseColor(requireContext().getSharedPreferences("themaSP", Context.MODE_PRIVATE).getString("backgroundThema", "#EFEFD0")));
 
 
         setToolBar();
@@ -274,7 +274,7 @@ public class ProfileFragment extends Fragment {
         toolbar.leftIcon.setVisibility(View.VISIBLE);
         toolbar.profileIcon.setVisibility(View.INVISIBLE);
         toolbar.settingsIcon.setVisibility(View.INVISIBLE);
-        toolbar.getRoot().setBackgroundColor(Color.parseColor(requireContext().getSharedPreferences("themaSP", Context.MODE_PRIVATE).getString("toolbarThema", "#8692f7")));
+        toolbar.getRoot().setBackgroundColor(Color.parseColor(requireContext().getSharedPreferences("themaSP", Context.MODE_PRIVATE).getString("toolbarThema", "#FF6B35")));
 
         toolbar.leftIcon.setOnClickListener(new View.OnClickListener() {
             @Override

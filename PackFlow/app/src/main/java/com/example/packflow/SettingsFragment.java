@@ -102,7 +102,7 @@ public class SettingsFragment extends Fragment {
         binding.imgThema3.setImageResource(R.drawable.pattern3);
         binding.imgThema4.setImageResource(R.drawable.pattern4);
 
-        binding.cnstWholeLayout.setBackgroundColor(Color.parseColor(requireContext().getSharedPreferences("themaSP", Context.MODE_PRIVATE).getString("backgroundThema", "#8692f7")));
+        binding.cnstWholeLayout.setBackgroundColor(Color.parseColor(requireContext().getSharedPreferences("themaSP", Context.MODE_PRIVATE).getString("backgroundThema", "#EFEFD0")));
         binding.btnChangeLanguage.setOnClickListener(v -> {
             if (requireContext().getSharedPreferences("themaSP", Context.MODE_PRIVATE).getString("language", "de").equals("de")) {
                 // Switch to English
@@ -150,6 +150,19 @@ public class SettingsFragment extends Fragment {
         Button btnCancel = dialogView.findViewById(R.id.btnCancel);
         Button btnAccept = dialogView.findViewById(R.id.btnAccept);
 
+        if (requireContext().getSharedPreferences("themaSP", Context.MODE_PRIVATE).getString("language", "de").equals("de")){
+            oldPassword.setHint("Altes Passwort");
+            newPassword.setHint("Neues Passwort");
+            confirmPassword.setHint("Neues Passwort wiederholen");
+            btnAccept.setText("Akzeptieren");
+            btnCancel.setText("Abbrechen");
+        }else{
+            oldPassword.setHint("Old Password");
+            newPassword.setHint("New Password");
+            confirmPassword.setHint("Confirm New Password");
+            btnAccept.setText("Accept");
+            btnCancel.setText("Cancel");
+        }
         AlertDialog dialog = builder.create();
         dialog.show();
 
@@ -234,9 +247,9 @@ public class SettingsFragment extends Fragment {
                             int statusCode = error.networkResponse.statusCode;
                             String body = new String(error.networkResponse.data, StandardCharsets.UTF_8);
                             if (requireContext().getSharedPreferences("themaSP", Context.MODE_PRIVATE).getString("language", "de").equals("de")){
-                                ShowPopUp("❌ Fehler:"+statusCode,"! "+body);
+                                ShowPopUp("❌ Fehler:"+statusCode,body);
                             }else{
-                                ShowPopUp("❌ Error:"+statusCode,"! "+body);
+                                ShowPopUp("❌ Error:"+statusCode,body);
                             }
                         }else{
                             //if correct response
@@ -298,11 +311,11 @@ public class SettingsFragment extends Fragment {
 
         if (requireContext().getSharedPreferences("themaSP", Context.MODE_PRIVATE).getString("language", "de").equals("de")){
             toolbar.title.setText("⚙\uFE0F Einstellungen-Seite");
-            binding.btnChangePas.setText("Passwort ändern");
+            binding.btnChangePas.setText("Passwort Ändern");
             binding.btnChangeLanguage.setText("Deutsch");
         }else{
             toolbar.title.setText("⚙\uFE0F Settings");
-            binding.btnChangePas.setText("change Password");
+            binding.btnChangePas.setText("Change Password");
             binding.btnChangeLanguage.setText("English");
         }
 
@@ -314,7 +327,7 @@ public class SettingsFragment extends Fragment {
         binding.btnChangePas.setBackgroundResource(requireContext().getSharedPreferences("themaSP", Context.MODE_PRIVATE).getInt("btnThema",R.drawable.custom_button_pattern1));
         binding.btnChangeLanguage.setBackgroundResource(requireContext().getSharedPreferences("themaSP", Context.MODE_PRIVATE).getInt("btnThema",R.drawable.custom_button_pattern1));
 
-        toolbar.getRoot().setBackgroundColor(Color.parseColor(requireContext().getSharedPreferences("themaSP", Context.MODE_PRIVATE).getString("toolbarThema", "#8692f7")));
+        toolbar.getRoot().setBackgroundColor(Color.parseColor(requireContext().getSharedPreferences("themaSP", Context.MODE_PRIVATE).getString("toolbarThema", "#FF6B35")));
 
 
         toolbar.leftIcon.setOnClickListener(new View.OnClickListener() {

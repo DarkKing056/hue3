@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
+        newerBackCall();
 
         replaceFragment(new LoginFragment());
         if (savedInstanceState == null) {
@@ -37,17 +38,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
     }
 
-    @Override
-    public void onBackPressed() {
-        // Check if the current fragment is LoginFragment
-        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-        if (currentFragment instanceof HomePageFragment) {
-            // Prevent back press if on LoginFragment (or take any custom action)
-            return; // Ignore the back press
-        }
+    // Add this method for newer Android versions (API 33+)
+    public void newerBackCall() {
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                // Check if the current fragment is LoginFragment
+                Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+                if (currentFragment instanceof HomePageFragment || currentFragment instanceof LoginFragment) {
+                    // Prevent back press if on LoginFragment (or take any custom action)
+                    return; // Ignore the back press
+                }
 
-        // Otherwise, let the system handle the back press (standard behavior)
-        super.onBackPressed();
+                // Allow the standard back action
+                setEnabled(false);
+                getOnBackPressedDispatcher().onBackPressed();
+            }
+        });
     }
 
 
